@@ -40,7 +40,7 @@ live_design! {
                     show_bg: true
                     draw_bg: { color: (MAIN_BG) }
 
-                    // Sidebar 
+                    // Sidebar
                     sidebar = <View> {
                         height: Fill
                         width: 250
@@ -245,7 +245,7 @@ live_design! {
                     app_container = <View> {
                         width: Fill, height: Fill
                         flow: Down
-                        
+
                         dataflow_manager_app = <View> {
                             width: Fill, height: Fill
                             flow: Down
@@ -589,24 +589,40 @@ impl App {
         self.active_app = app;
 
         // Reset all to 0 height
-        self.ui.view(ids!(dataflow_manager_app)).apply_over(cx, live! { height: 0 });
-        self.ui.view(ids!(yaml_editor_app)).apply_over(cx, live! { height: 0 });
-        self.ui.view(ids!(log_viewer_app)).apply_over(cx, live! { height: 0 });
-        self.ui.view(ids!(telemetry_dashboard_app)).apply_over(cx, live! { height: 0 });
+        self.ui
+            .view(ids!(dataflow_manager_app))
+            .apply_over(cx, live! { height: 0 });
+        self.ui
+            .view(ids!(yaml_editor_app))
+            .apply_over(cx, live! { height: 0 });
+        self.ui
+            .view(ids!(log_viewer_app))
+            .apply_over(cx, live! { height: 0 });
+        self.ui
+            .view(ids!(telemetry_dashboard_app))
+            .apply_over(cx, live! { height: 0 });
 
         // Set the active one to Fill height
         match app {
             ActiveApp::DataflowManager => {
-                self.ui.view(ids!(dataflow_manager_app)).apply_over(cx, live! { height: Fill });
+                self.ui
+                    .view(ids!(dataflow_manager_app))
+                    .apply_over(cx, live! { height: Fill });
             }
             ActiveApp::YamlEditor => {
-                self.ui.view(ids!(yaml_editor_app)).apply_over(cx, live! { height: Fill });
+                self.ui
+                    .view(ids!(yaml_editor_app))
+                    .apply_over(cx, live! { height: Fill });
             }
             ActiveApp::LogViewer => {
-                self.ui.view(ids!(log_viewer_app)).apply_over(cx, live! { height: Fill });
+                self.ui
+                    .view(ids!(log_viewer_app))
+                    .apply_over(cx, live! { height: Fill });
             }
             ActiveApp::TelemetryDashboard => {
-                self.ui.view(ids!(telemetry_dashboard_app)).apply_over(cx, live! { height: Fill });
+                self.ui
+                    .view(ids!(telemetry_dashboard_app))
+                    .apply_over(cx, live! { height: Fill });
             }
         }
         self.ui.redraw(cx);
