@@ -36,7 +36,8 @@ async fn main() -> eyre::Result<()> {
     // tokio::spawn(otlp_listener::grpc::start_server(4317));
 
     // 7. Mount Axum App
-    let app = routes::create_app_router(); // will pass app_state later
+    let app = routes::create_app_router() // will pass app_state later
+        .layer(tower_http::trace::TraceLayer::new_for_http());
 
     let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
     info!("Server listening on {}", addr);

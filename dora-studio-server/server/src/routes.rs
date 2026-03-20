@@ -18,20 +18,20 @@ pub fn create_app_router() -> Router {
         )
         .route("/dataflows/parse", post(rest::dataflows::parse_dataflow))
         .route(
-            "/dataflows/:id",
+            "/dataflows/{id}",
             get(rest::dataflows::get_dataflow_details).delete(rest::dataflows::delete_dataflow),
         )
         .route(
-            "/dataflows/:id/reload",
+            "/dataflows/{id}/reload",
             post(rest::dataflows::reload_dataflow),
         )
         .route(
-            "/dataflows/:id/nodes",
+            "/dataflows/{id}/nodes",
             get(rest::dataflows::list_dataflow_nodes),
         )
         .route("/daemons", get(rest::daemons::list_daemons))
         .route(
-            "/daemons/:machine_id",
+            "/daemons/{machine_id}",
             get(rest::daemons::get_daemon_details),
         )
         .route("/nodes/library", get(rest::nodes::list_node_library))
@@ -45,11 +45,11 @@ pub fn create_app_router() -> Router {
         .nest("/api/v1", api_routes)
         .route("/ws/dataflows", get(ws::status::ws_status_handler))
         .route(
-            "/ws/dataflows/:id/nodes",
+            "/ws/dataflows/{id}/nodes",
             get(ws::nodes::ws_dataflow_nodes_handler),
         )
         .route("/ws/logs", get(ws::logs::ws_logs_handler))
-        .route("/ws/topics/:topic", get(ws::topics::ws_topic_handler))
+        .route("/ws/topics/{topic}", get(ws::topics::ws_topic_handler))
 }
 
 
