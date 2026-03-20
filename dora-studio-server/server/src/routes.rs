@@ -51,5 +51,3 @@ pub fn create_app_router() -> Router {
         .route("/ws/logs", get(ws::logs::ws_logs_handler))
         .route("/ws/topics/{topic}", get(ws::topics::ws_topic_handler))
 }
-
-
