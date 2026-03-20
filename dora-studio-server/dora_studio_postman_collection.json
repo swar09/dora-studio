@@ -1,0 +1,194 @@
+{
+  "info": {
+    "name": "Dora Studio Server",
+    "description": "Comprehensive API mappings for the Dora Studio rust server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Dataflows (REST)",
+      "item": [
+        {
+          "name": "List Dataflows",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/dataflows",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "dataflows"]
+            }
+          }
+        },
+        {
+          "name": "Start Dataflow",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"yaml\": \"nodes:\\n  - id: source\\n...\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/dataflows",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "dataflows"]
+            }
+          }
+        },
+        {
+          "name": "Validate YAML",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/v1/dataflows/validate", "host": ["{{base_url}}"], "path": ["api", "v1", "dataflows", "validate"] }
+          }
+        },
+        {
+          "name": "Parse YAML to GUI Graph",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/v1/dataflows/parse", "host": ["{{base_url}}"], "path": ["api", "v1", "dataflows", "parse"] }
+          }
+        },
+        {
+          "name": "Get Specific Dataflow",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/dataflows/dora-1234", "host": ["{{base_url}}"], "path": ["api", "v1", "dataflows", "dora-1234"] }
+          }
+        },
+        {
+          "name": "Stop and Delete Dataflow",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{base_url}}/api/v1/dataflows/dora-1234", "host": ["{{base_url}}"], "path": ["api", "v1", "dataflows", "dora-1234"] }
+          }
+        },
+        {
+          "name": "Reload Dataflow",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/v1/dataflows/dora-1234/reload", "host": ["{{base_url}}"], "path": ["api", "v1", "dataflows", "dora-1234", "reload"] }
+          }
+        },
+        {
+          "name": "List Dataflow Nodes",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/dataflows/dora-1234/nodes", "host": ["{{base_url}}"], "path": ["api", "v1", "dataflows", "dora-1234", "nodes"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Daemons & Nodes (REST)",
+      "item": [
+        {
+          "name": "List Daemons",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/daemons", "host": ["{{base_url}}"], "path": ["api", "v1", "daemons"] }
+          }
+        },
+        {
+          "name": "Get Specific Daemon",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/daemons/machine-123", "host": ["{{base_url}}"], "path": ["api", "v1", "daemons", "machine-123"] }
+          }
+        },
+        {
+          "name": "Node Library",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/nodes/library", "host": ["{{base_url}}"], "path": ["api", "v1", "nodes", "library"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Historical Traces (REST)",
+      "item": [
+        {
+          "name": "Query Database Metrics",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/metrics", "host": ["{{base_url}}"], "path": ["api", "v1", "metrics"] }
+          }
+        },
+        {
+          "name": "Query Database Traces",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/traces", "host": ["{{base_url}}"], "path": ["api", "v1", "traces"] }
+          }
+        },
+        {
+          "name": "Query Database Logs",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/logs", "host": ["{{base_url}}"], "path": ["api", "v1", "logs"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Streaming (SSE)",
+      "item": [
+        {
+          "name": "Metrics Stream",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/metrics/stream", "host": ["{{base_url}}"], "path": ["api", "v1", "metrics", "stream"] }
+          }
+        },
+        {
+          "name": "Events Stream",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/v1/events", "host": ["{{base_url}}"], "path": ["api", "v1", "events"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "WebSockets",
+      "item": [
+        {
+          "name": "Live Global Dataflow Statuses",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "ws://localhost:3000/ws/dataflows", "protocol": "ws", "host": ["localhost"], "port": "3000", "path": ["ws", "dataflows"] }
+          }
+        },
+        {
+          "name": "Live Node Traces for Dataflow",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "ws://localhost:3000/ws/dataflows/dora-1234/nodes", "protocol": "ws", "host": ["localhost"], "port": "3000", "path": ["ws", "dataflows", "dora-1234", "nodes"] }
+          }
+        },
+        {
+          "name": "Live Log Stream",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "ws://localhost:3000/ws/logs", "protocol": "ws", "host": ["localhost"], "port": "3000", "path": ["ws", "logs"] }
+          }
+        },
+        {
+          "name": "Live Topic Network Inspection",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "ws://localhost:3000/ws/topics/vision-feed", "protocol": "ws", "host": ["localhost"], "port": "3000", "path": ["ws", "topics", "vision-feed"] }
+          }
+        }
+      ]
+    }
+  ]
+}

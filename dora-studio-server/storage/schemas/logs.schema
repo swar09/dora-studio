@@ -1,0 +1,15 @@
+{
+  "name": "logs",
+  "partition": "by_date",
+  "retention_days": 30,
+  "fields": [
+    { "name": "ts",            "type": "Int64",  "nullable": false },
+    { "name": "date",          "type": "Utf8",   "nullable": false },
+    { "name": "dataflow_uuid", "type": "Utf8",   "nullable": true  },
+    { "name": "node_id",       "type": "Utf8",   "nullable": true  },
+    { "name": "level",         "type": "Utf8",   "nullable": false },
+    { "name": "target",        "type": "Utf8",   "nullable": true  },
+    { "name": "message",       "type": "Utf8",   "nullable": false },
+    { "name": "fields_json",   "type": "Utf8",   "nullable": true  }
+  ]
+}

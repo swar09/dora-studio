@@ -1,0 +1,15 @@
+{
+  "name": "metrics",
+  "partition": "by_date",
+  "retention_days": 7,
+  "fields": [
+    { "name": "ts",             "type": "Int64",   "nullable": false, "description": "Unix timestamp ms" },
+    { "name": "date",           "type": "Utf8",    "nullable": false, "description": "Partition key yyyy-mm-dd" },
+    { "name": "dataflow_uuid",  "type": "Utf8",    "nullable": true  },
+    { "name": "node_id",        "type": "Utf8",    "nullable": true  },
+    { "name": "cpu_percent",    "type": "Float32", "nullable": true  },
+    { "name": "memory_mb",      "type": "Float64", "nullable": true  },
+    { "name": "disk_read_mbs",  "type": "Float64", "nullable": true  },
+    { "name": "disk_write_mbs", "type": "Float64", "nullable": true  }
+  ]
+}

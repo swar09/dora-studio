@@ -1,0 +1,13 @@
+[package]
+name = "coordinator-client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tarpc = { workspace = true }
+tokio = { workspace = true }
+eyre = { workspace = true }
+dora-core = { workspace = true }
+dora-message = { workspace = true }
+shared = { path = "../core" }
+tokio-serde = { workspace = true }

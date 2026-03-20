@@ -1,0 +1,15 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { workspace = true }
+axum = { workspace = true }
+eyre = { workspace = true }
+api = { path = "../api" }
+coordinator-client = { path = "../coordinator-client" }
+storage = { path = "../storage" }
+shared = { path = "../core" }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }

@@ -1,0 +1,17 @@
+{
+  "name": "spans",
+  "partition": "by_date",
+  "retention_days": 7,
+  "fields": [
+    { "name": "trace_id",      "type": "Utf8",  "nullable": false },
+    { "name": "span_id",       "type": "Utf8",  "nullable": false },
+    { "name": "parent_span_id","type": "Utf8",  "nullable": true  },
+    { "name": "name",          "type": "Utf8",  "nullable": false },
+    { "name": "start_time",    "type": "Int64", "nullable": false },
+    { "name": "end_time",      "type": "Int64", "nullable": false },
+    { "name": "duration_ms",   "type": "Int64", "nullable": false },
+    { "name": "node_id",       "type": "Utf8",  "nullable": true  },
+    { "name": "date",          "type": "Utf8",  "nullable": false },
+    { "name": "attributes_json","type": "Utf8", "nullable": true  }
+  ]
+}
